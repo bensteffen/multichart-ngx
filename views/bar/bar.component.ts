@@ -40,8 +40,8 @@ export class BarComponent extends View {
     const barNumber = this._data.length
     const barWidthRatio = this._barWidthRatio
     const minBarWidth = this._minBarWidth || 2;
-    const barSlotSize = this.domain.size.width/barNumber;
-    const barWidth = Math.max(barWidthRatio*barSlotSize, minBarWidth);
+    const barSlotSize = this.domain.size.width / (barNumber - 1);
+    const barWidth = Math.max(barWidthRatio * barSlotSize, minBarWidth);
 
     const getOffset = (y: number) => {
       if (y >= 0) {
@@ -57,7 +57,7 @@ export class BarComponent extends View {
         return this.domain.scales.y(y) - this.domain.scales.y(0);
       }
     }
-    const getX = (x: number) => this.domain.scales.x(x) - 0.5*barWidth
+    const getX = (x: number) => this.domain.scales.x(x) - 0.5 * barWidth
 
     this.bars = this._data.map(d => ({
       x: getX(d.x),

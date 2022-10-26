@@ -16,13 +16,13 @@ export class DomainComponent implements OnInit {
   private _xLimits: interval | null = null
   @Input() set xLimits(limits: interval) {
     this._xLimits = limits
-    this.scaleStore.updateDomain({xDomain: limits})
+    this.scaleStore.updateDomain({ xDomain: limits })
   }
 
   private _yLimits: interval | null = null
   @Input() set yLimits(limits: interval) {
     this._yLimits = limits
-    this.scaleStore.updateDomain({yDomain: limits})
+    this.scaleStore.updateDomain({ yDomain: limits })
   }
 
   public transform = ""
