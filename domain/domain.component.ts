@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Size, Margins } from '../entity/entities'
+import { Size, Margins, Extents } from '../entity/entities'
 import { interval } from '../entity/types'
 import { ChartStoreService } from '../services/chart-store.service';
 import { ScaleStoreService } from '../services/scale-store.service';
@@ -46,7 +46,7 @@ export class DomainComponent implements OnInit {
 
   ngOnInit(): void {
     this.chartStore.size$.subscribe((size: Size) => this.chartSize = size)
-    this.scaleStore.extents$.subscribe(extents =>
+    this.scaleStore.extents$.subscribe((extents: Extents) =>
       this.scaleStore.updateDomain({
         xDomain: this._xLimits || extents.x,
         yDomain: this._yLimits || extents.y
